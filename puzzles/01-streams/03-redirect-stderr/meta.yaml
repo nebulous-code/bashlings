@@ -1,0 +1,13 @@
+id: 01-streams/03-redirect-stderr
+title: Silencing errors while keeping output
+module: 01-streams
+difficulty: easy
+estimated_minutes: 5
+hints:
+  - "Errors and normal output are on different streams (stdout vs stderr)."
+  - "You can redirect stderr alone with 2>."
+  - "Sending stderr to /dev/null discards it; capture stdout into the file you want."
+tags: [redirection, stderr, basics]
+requires:
+  network: false
+  writable_paths: [/puzzle]

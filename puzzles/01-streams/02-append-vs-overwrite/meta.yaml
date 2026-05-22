@@ -1,0 +1,13 @@
+id: 01-streams/02-append-vs-overwrite
+title: Append a line without clobbering the file
+module: 01-streams
+difficulty: easy
+estimated_minutes: 3
+hints:
+  - "`>` overwrites; you want the other one."
+  - "There is a two-character operator that adds to a file instead of replacing it."
+  - "`echo 'new line' >> file.log`"
+tags: [redirection, append, basics]
+requires:
+  network: false
+  writable_paths: [/puzzle]

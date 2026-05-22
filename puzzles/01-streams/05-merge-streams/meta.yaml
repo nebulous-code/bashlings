@@ -1,0 +1,13 @@
+id: 01-streams/05-merge-streams
+title: Combine the tail of one file with the head of another
+module: 01-streams
+difficulty: easy
+estimated_minutes: 6
+hints:
+  - "`tail -n 20 a` prints the last 20 lines of `a`. `head -n 5 b` prints the first 5 of `b`."
+  - "You can group multiple commands and redirect their combined output: `{ cmd1; cmd2; } > file`."
+  - "`{ tail -n 20 a; head -n 5 b; } > c`."
+tags: [head, tail, redirection, composition]
+requires:
+  network: false
+  writable_paths: [/puzzle]

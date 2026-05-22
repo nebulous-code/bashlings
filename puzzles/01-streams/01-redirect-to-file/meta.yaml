@@ -1,0 +1,13 @@
+id: 01-streams/01-redirect-to-file
+title: Save command output to a file
+module: 01-streams
+difficulty: easy
+estimated_minutes: 3
+hints:
+  - "stdout is just a stream. Sending it to a file is a redirection, not a copy."
+  - "The operator is one character."
+  - "`ls > out.txt` redirects stdout to a file."
+tags: [redirection, basics]
+requires:
+  network: false
+  writable_paths: [/puzzle]

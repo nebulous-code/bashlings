@@ -1,0 +1,13 @@
+id: 01-streams/04-count-lines
+title: Count the lines in a file
+module: 01-streams
+difficulty: easy
+estimated_minutes: 4
+hints:
+  - "`wc` counts words, lines, characters. The right flag asks for lines only."
+  - "By default `wc -l file` prints the count *and* the filename. You only want the number."
+  - "Either pipe the file in (`wc -l < data.txt`) or strip the filename column from the output."
+tags: [counting, redirection, basics]
+requires:
+  network: false
+  writable_paths: [/puzzle]

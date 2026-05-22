@@ -1,0 +1,32 @@
+FROM debian:stable-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        bash \
+        coreutils \
+        findutils \
+        grep \
+        sed \
+        gawk \
+        ripgrep \
+        jq \
+        curl \
+        wget \
+        tar \
+        gzip \
+        bzip2 \
+        xz-utils \
+        less \
+        vim-tiny \
+        nano \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Non-root user the runner expects (UID 1000).
+RUN useradd -m -u 1000 -s /bin/bash bashlings
+
+USER bashlings
+WORKDIR /puzzle
+
+CMD ["/bin/bash"]

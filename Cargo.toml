@@ -1,6 +1,33 @@
 [package]
-name = "Bashlings"
+name = "bashlings"
 version = "0.1.0"
 edition = "2024"
+description = "Learn bash by solving puzzles in disposable Podman containers."
+license = "MIT"
+
+[lib]
+name = "bashlings"
+path = "src/lib.rs"
+
+[[bin]]
+name = "bashlings"
+path = "src/main.rs"
 
 [dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+clap = { version = "4", features = ["derive"] }
+dirs = "5"
+fs_extra = "1"
+is-terminal = "0.4"
+owo-colors = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+uuid = { version = "1", features = ["v4"] }
+walkdir = "2"
+
+[dev-dependencies]
+tempfile = "3"
