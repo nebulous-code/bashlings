@@ -31,9 +31,10 @@ fn default_args_set_security_flags() {
         args.contains(&"--memory=512m".to_string()),
         "missing --memory=512m: {joined}"
     );
+    // --cpus is intentionally absent (see container.rs for why).
     assert!(
-        args.contains(&"--cpus=1".to_string()),
-        "missing --cpus=1: {joined}"
+        !args.contains(&"--cpus=1".to_string()),
+        "--cpus=1 should be omitted — see container.rs rationale: {joined}"
     );
     assert!(
         args.contains(&"--pids-limit=256".to_string()),

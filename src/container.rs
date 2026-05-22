@@ -62,7 +62,13 @@ impl PodmanRun {
         v.push("--cap-drop=ALL".into());
         v.push("--security-opt=no-new-privileges".into());
         v.push("--memory=512m".into());
-        v.push("--cpus=1".into());
+        // The design doc specifies `--cpus=1`, but the `cpu` cgroup v2 controller
+        // is not delegated to user slices by default on Ubuntu/Mint, so requiring
+        // it breaks rootless `podman run` out of the box. Dropping the throttle
+        // costs us a defense against a *runaway* puzzle pegging host CPU; it does
+        // not weaken the protections that matter (network, capabilities, fs,
+        // memory, pids). If we ever support untrusted third-party puzzles, this
+        // is where a "strict mode" should reintroduce a CPU cap.
         v.push("--pids-limit=256".into());
         v.push("-u".into());
         v.push("1000:1000".into());
