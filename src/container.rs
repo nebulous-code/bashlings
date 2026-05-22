@@ -75,7 +75,12 @@ impl PodmanRun {
         v.push("-w".into());
         v.push("/puzzle".into());
         v.push("-v".into());
-        v.push(format!("{}:/puzzle:Z", self.workspace.display()));
+        // `:U` chowns the bind-mount to the container's runtime UID — required
+        // for rootless Podman because UID 1000 inside the container maps via
+        // subuid to a different UID on the host, which doesn't own the
+        // workspace dir. `:Z` relabels for SELinux; it's a no-op on Ubuntu/Mint
+        // but harmless to include.
+        v.push(format!("{}:/puzzle:Z,U", self.workspace.display()));
         // Minimal env.
         for kv in [
             "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",

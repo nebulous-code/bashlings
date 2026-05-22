@@ -41,8 +41,8 @@ fn default_args_set_security_flags() {
         "missing --pids-limit=256: {joined}"
     );
     assert!(
-        joined.contains("/tmp/ws-x:/puzzle"),
-        "workspace mount missing: {joined}"
+        joined.contains("/tmp/ws-x:/puzzle:Z,U"),
+        "workspace mount missing or wrong flags (need :Z,U for rootless): {joined}"
     );
     assert!(
         args.contains(&container::IMAGE_TAG.to_string()),
